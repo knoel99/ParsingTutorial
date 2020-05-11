@@ -9,6 +9,11 @@ public class User {
         this.age = age;
     }
 
+    public User(User user) {
+        this.name = user.getName();
+        this.age = user.getAge();
+    }
+
     public User() {
     }
 

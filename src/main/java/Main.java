@@ -2,10 +2,11 @@ import Model.User;
 import Service.ImportJSON;
 import Service.ParseJSON;
 import Service.Stats;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -23,16 +24,19 @@ public class Main {
          * Parse file content into Object
          */
         ParseJSON parseJSON = new ParseJSON();
-        List<User> userList = parseJSON.parser(fileContent);
+        ArrayList<User> userList = parseJSON.parser(fileContent);
         System.out.println(Arrays.toString(userList.toArray()));
 
         /**
          * Do some stats on the data
          */
         Stats stats = new Stats(userList);
-        User youngestUser = stats.getYoungest();
-        //User youngestUser = mapper.convertValue(stats.getYoungest2(), User.class);
+        System.out.println("YoungestUser: " + stats.getYoungest());
+        System.out.println("YoungestUserStream: " + stats.getYoungestStream());
+        System.out.println();
+        System.out.println("OldestUser: " + stats.getOldest());
+        System.out.println("OldestUserStream: " + stats.getOldestStream());
+        System.out.println();
 
-        //System.out.println(youngestUser);
     }
 }
