@@ -2,34 +2,32 @@ package Service;
 
 import Model.User;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 public class Stats {
 
-    private ArrayList<User> userList;
+    private User[] userList;
 
-    public Stats(ArrayList<User> userList) {
-        this.userList = new ArrayList<User>(userList) ;
+    public Stats(User[] userList) {
+        this.userList = userList ;
     }
 
-    public Stats() {}
-
-    public List<User> getUserList() {
+    public User[] getUserList() {
         return userList;
     }
 
-    public void setUserList(ArrayList<User> userList) {
+    public void setUserList(User[] userList) {
         this.userList = userList;
     }
 
     public User getYoungest(){
         User youngestUser = new User();
         try {
-            youngestUser = new User(this.userList.get(0));
-            for (int i=0; i<this.userList.size(); i++){
-                if (youngestUser.getAge() > this.userList.get(i).getAge()) {
-                    youngestUser = new User(this.userList.get(i));
+            youngestUser = new User(this.userList[0]);
+            for (int i = 0; i< this.userList.length; i++){
+                if (youngestUser.getAge() > this.userList[i].getAge()) {
+                    youngestUser = new User(this.userList[i]);
                 }
             }
         } catch (Exception e){
@@ -39,7 +37,7 @@ public class Stats {
     }
 
     public User getYoungestStream(){
-        return this.userList.stream()
+        return Arrays.stream(this.userList)
                 .min(Comparator.comparing(User::getAge))
                 .get();
     }
@@ -47,10 +45,10 @@ public class Stats {
     public User getOldest(){
         User oldestUser = new User();
         try {
-            oldestUser = new User(this.userList.get(0));
-            for (int i=0; i<this.userList.size(); i++){
-                if (oldestUser.getAge() < this.userList.get(i).getAge()) {
-                    oldestUser = new User(this.userList.get(i));
+            oldestUser = new User(this.userList[0]);
+            for (int i = 0; i< this.userList.length; i++){
+                if (oldestUser.getAge() < this.userList[i].getAge()) {
+                    oldestUser = new User(this.userList[i]);
                 }
             }
         } catch (Exception e){
@@ -60,7 +58,7 @@ public class Stats {
     }
 
     public User getOldestStream(){
-        return this.userList.stream()
+        return Arrays.stream(this.userList)
                 .max(Comparator.comparing(User::getAge))
                 .get();
     }

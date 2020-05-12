@@ -3,10 +3,7 @@ import Service.ImportJSON;
 import Service.ParseJSON;
 import Service.Stats;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 public class Main {
 
@@ -18,14 +15,13 @@ public class Main {
         String path = "src\\main\\resources\\liste_noms_age.json";
         ImportJSON importJSON = new ImportJSON();
         String fileContent = importJSON.readFile(path);
-        //System.out.println(fileContent);
 
         /**
          * Parse file content into Object
          */
         ParseJSON parseJSON = new ParseJSON();
-        ArrayList<User> userList = parseJSON.parser(fileContent);
-        System.out.println(Arrays.toString(userList.toArray()));
+        User[] userList = parseJSON.parser(fileContent);
+        System.out.println(Arrays.toString(userList));
 
         /**
          * Do some stats on the data
@@ -37,6 +33,7 @@ public class Main {
         System.out.println("OldestUser: " + stats.getOldest());
         System.out.println("OldestUserStream: " + stats.getOldestStream());
         System.out.println();
+
 
     }
 }
