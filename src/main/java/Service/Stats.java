@@ -62,4 +62,22 @@ public class Stats {
                 .get();
     }
 
+    public float getAverageAge(){
+        int averageAge = 0;
+        try {
+            for (User user: this.userList){
+                averageAge += user.getAge();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return (float) averageAge/this.userList.length;
+    }
+
+    public float getAverageAgeStream(){
+        return (float) Arrays.stream(this.userList)
+                .mapToDouble(User::getAge)
+                .average()
+                .getAsDouble();
+    }
 }

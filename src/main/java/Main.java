@@ -14,7 +14,6 @@ public class Main {
         /**
          * Read file
          */
-        //String path = "src/main/resources/liste_noms_age.json";
         ImportJSON importJSON = new ImportJSON();
         String fileContent = importJSON.readFile(path);
 
@@ -35,7 +34,9 @@ public class Main {
         System.out.println("OldestUser: " + stats.getOldest());
         System.out.println("OldestUserStream: " + stats.getOldestStream());
         System.out.println();
-
+        System.out.println("AverageAge: " + stats.getAverageAge());
+        System.out.println("AverageAgeStream: " + stats.getAverageAgeStream());
+        System.out.println();
 
     }
 }
