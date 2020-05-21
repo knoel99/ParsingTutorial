@@ -28,15 +28,6 @@ public class Main {
          */
         Stats stats = new Stats(userList);
         stats.init();
-        System.out.println("YoungestUser: " + stats.getYoungest());
-        System.out.println("YoungestUserStream: " + stats.getYoungestStream());
-        System.out.println();
-        System.out.println("OldestUser: " + stats.computeOldest());
-        System.out.println("OldestUserStream: " + stats.computeOldestStream());
-        System.out.println();
-        System.out.println("AverageAge: " + stats.computeAverageAge());
-        System.out.println("AverageAgeStream: " + stats.computeAverageAgeStream());
-        System.out.println();
-
+        System.out.println(stats.toString());
     }
 }

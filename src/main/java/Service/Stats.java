@@ -3,6 +3,7 @@ package Service;
 import Model.User;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.stream.IntStream;
 
 public class Stats {
 
@@ -97,7 +98,11 @@ public class Stats {
     }
 
     public int computeLargestAgeGapStream(){
-        return 1;
+        return IntStream
+                .range(0, this.userList.length -1)
+                .map(i -> this.userList[i+1].getAge()-this.userList[i].getAge())
+                .max()
+                .getAsInt();
     }
 
     public void init(){
@@ -176,5 +181,19 @@ public class Stats {
     }
     public void setLargestAgeGapStream(int largestAgeGapStream) {
         this.largestAgeGapStream = largestAgeGapStream;
+    }
+
+    public String toString(){
+        return "YoungestUser: " + this.getYoungest() + "\n"+
+                "YoungestUserStream: " + this.getYoungestStream() + "\n"+
+                "\n"+
+                "OldestUser: " + this.getOldest()+ "\n"+
+                "OldestUserStream: " + this.getOldestStream()+ "\n"+
+                "\n"+
+                "AverageAge: " + this.getAverageAge()+"\n"+
+                "AverageAgeStream: " + this.getAverageAgeStream()+"\n"+
+                "\n"+
+                "LargestAgeGap: " + this.getLargestAgeGap()+"\n"+
+                "LargestAgeGapStream: " + this.getLargestAgeGapStream();
     }
 }
