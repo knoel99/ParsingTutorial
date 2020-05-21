@@ -2,7 +2,6 @@ import Model.User;
 import Service.ImportJSON;
 import Service.ParseJSON;
 import Service.Stats;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
@@ -28,14 +27,15 @@ public class Main {
          * Do some stats on the data
          */
         Stats stats = new Stats(userList);
+        stats.init();
         System.out.println("YoungestUser: " + stats.getYoungest());
         System.out.println("YoungestUserStream: " + stats.getYoungestStream());
         System.out.println();
-        System.out.println("OldestUser: " + stats.getOldest());
-        System.out.println("OldestUserStream: " + stats.getOldestStream());
+        System.out.println("OldestUser: " + stats.computeOldest());
+        System.out.println("OldestUserStream: " + stats.computeOldestStream());
         System.out.println();
-        System.out.println("AverageAge: " + stats.getAverageAge());
-        System.out.println("AverageAgeStream: " + stats.getAverageAgeStream());
+        System.out.println("AverageAge: " + stats.computeAverageAge());
+        System.out.println("AverageAgeStream: " + stats.computeAverageAgeStream());
         System.out.println();
 
     }

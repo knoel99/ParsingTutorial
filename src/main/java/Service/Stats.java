@@ -7,20 +7,20 @@ import java.util.Comparator;
 public class Stats {
 
     private User[] userList;
+    private User youngest;
+    private User youngestStream;
+    private User oldest;
+    private User oldestStream;
+    private float averageAge;
+    private float averageAgeStream;
+    private int largestAgeGap;
+    private int largestAgeGapStream;
 
     public Stats(User[] userList) {
         this.userList = userList ;
     }
 
-    public User[] getUserList() {
-        return userList;
-    }
-
-    public void setUserList(User[] userList) {
-        this.userList = userList;
-    }
-
-    public User getYoungest(){
+    public User computeYoungest(){
         User youngestUser = new User();
         try {
             youngestUser = new User(this.userList[0]);
@@ -35,13 +35,13 @@ public class Stats {
         return youngestUser;
     }
 
-    public User getYoungestStream(){
+    public User computeYoungestStream(){
         return Arrays.stream(this.userList)
                 .min(Comparator.comparing(User::getAge))
                 .get();
     }
 
-    public User getOldest(){
+    public User computeOldest(){
         User oldestUser = new User();
         try {
             oldestUser = new User(this.userList[0]);
@@ -56,13 +56,13 @@ public class Stats {
         return oldestUser;
     }
 
-    public User getOldestStream(){
+    public User computeOldestStream(){
         return Arrays.stream(this.userList)
                 .max(Comparator.comparing(User::getAge))
                 .get();
     }
 
-    public float getAverageAge(){
+    public float computeAverageAge(){
         int averageAge = 0;
         try {
             for (User user: this.userList){
@@ -74,10 +74,107 @@ public class Stats {
         return (float) averageAge/this.userList.length;
     }
 
-    public float getAverageAgeStream(){
+    public float computeAverageAgeStream(){
         return (float) Arrays.stream(this.userList)
                 .mapToDouble(User::getAge)
                 .average()
                 .getAsDouble();
+    }
+
+    public int computeLargestAgeGap(){
+        int gap = 0;
+        try {
+            gap = this.userList[1].getAge() - this.userList[0].getAge();
+            for (int i=1; i < userList.length-1; i++){
+                if (gap < this.userList[i+1].getAge() - this.userList[i].getAge()){
+                    gap = this.userList[i+1].getAge() - this.userList[i].getAge();
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return gap;
+    }
+
+    public int computeLargestAgeGapStream(){
+        return 1;
+    }
+
+    public void init(){
+        this.setYoungest(this.computeYoungest());
+        this.setYoungestStream(this.computeYoungestStream());
+        this.setOldest(this.computeOldest());
+        this.setOldestStream(this.computeOldestStream());
+        this.setAverageAge(this.computeAverageAge());
+        this.setAverageAgeStream(this.computeAverageAgeStream());
+        this.setLargestAgeGap(this.computeLargestAgeGap());
+        this.setLargestAgeGapStream(this.computeLargestAgeGapStream());
+    }
+
+    /***
+     * getter and setters
+     */
+
+    public User[] getUserList() {
+        return userList;
+    }
+    public void setUserList(User[] userList) {
+        this.userList = userList;
+    }
+
+    public User getYoungest() {
+        return youngest;
+    }
+    public void setYoungest(User youngest) {
+        this.youngest = youngest;
+    }
+
+    public User getYoungestStream() {
+        return youngestStream;
+    }
+    public void setYoungestStream(User youngestStream) {
+        this.youngestStream = youngestStream;
+    }
+
+    public User getOldest() {
+        return oldest;
+    }
+    public void setOldest(User oldest) {
+        this.oldest = oldest;
+    }
+
+    public User getOldestStream() {
+        return oldestStream;
+    }
+    public void setOldestStream(User oldestStream) {
+        this.oldestStream = oldestStream;
+    }
+
+    public float getAverageAge() {
+        return averageAge;
+    }
+    public void setAverageAge(float averageAge) {
+        this.averageAge = averageAge;
+    }
+
+    public float getAverageAgeStream() {
+        return averageAgeStream;
+    }
+    public void setAverageAgeStream(float averageAgeStream) {
+        this.averageAgeStream = averageAgeStream;
+    }
+
+    public int getLargestAgeGap() {
+        return largestAgeGap;
+    }
+    public void setLargestAgeGap(int largestAgeGap) {
+        this.largestAgeGap = largestAgeGap;
+    }
+
+    public int getLargestAgeGapStream() {
+        return largestAgeGapStream;
+    }
+    public void setLargestAgeGapStream(int largestAgeGapStream) {
+        this.largestAgeGapStream = largestAgeGapStream;
     }
 }
