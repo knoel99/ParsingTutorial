@@ -2,17 +2,19 @@ import Model.User;
 import Service.ImportJSON;
 import Service.ParseJSON;
 import Service.Stats;
-
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class Main {
 
     public static void main(String arg[])  {
+        String path = Paths.get(".", "src", "main", "resources", "liste_noms_age.json").toString();
 
         /**
          * Read file
          */
-        String path = "src\\main\\resources\\liste_noms_age.json";
+        //String path = "src/main/resources/liste_noms_age.json";
         ImportJSON importJSON = new ImportJSON();
         String fileContent = importJSON.readFile(path);
 
