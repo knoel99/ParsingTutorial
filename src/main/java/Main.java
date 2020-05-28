@@ -29,7 +29,7 @@ public class Main {
          * Do some stats on the data
          */
         Stats stats = new Stats(userList);
-        stats.init();
+        stats.compute();
         System.out.println(stats.toString());
 
         /**
@@ -38,9 +38,16 @@ public class Main {
         String pathXML = Paths.get(".", "src", "main", "resources", "liste_noms_age.XML").toString();
         ParseXML parseXML = new ParseXML();
         parseXML.parseXML(pathXML);
-        ArrayList<User> userList2 = parseXML.parseXML(pathXML);
-        userList2.forEach(user -> {
-            System.out.println(user);
-        });
+        ArrayList<User> userListXML = parseXML.parseXML(pathXML);
+
+        User[] userList2 = new User[userListXML.size()];
+        for (int i=0; i <userListXML.size(); i++){
+            userList2[i] = new User(userListXML.get(i).getName(), userListXML.get(i).getAge());
+        }
+        System.out.println("\n" + Arrays.toString(userList2));
+
+        Stats stats2 = new Stats(userList2);
+        stats2.compute();
+        System.out.println(stats2.toString());
     }
 }

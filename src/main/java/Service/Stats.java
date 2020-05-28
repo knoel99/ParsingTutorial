@@ -105,7 +105,7 @@ public class Stats {
                 .getAsInt();
     }
 
-    public void init(){
+    public void compute(){
         this.setYoungest(this.computeYoungest());
         this.setYoungestStream(this.computeYoungestStream());
         this.setOldest(this.computeOldest());
