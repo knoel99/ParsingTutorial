@@ -1,8 +1,10 @@
 import Model.User;
 import Service.ImportJSON;
 import Service.ParseJSON;
+import Service.ParseXML;
 import Service.Stats;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
@@ -29,5 +31,16 @@ public class Main {
         Stats stats = new Stats(userList);
         stats.init();
         System.out.println(stats.toString());
+
+        /**
+         * Import and parse XML
+         */
+        String pathXML = Paths.get(".", "src", "main", "resources", "liste_noms_age.XML").toString();
+        ParseXML parseXML = new ParseXML();
+        parseXML.parseXML(pathXML);
+        ArrayList<User> userList2 = parseXML.parseXML(pathXML);
+        userList2.forEach(user -> {
+            System.out.println(user);
+        });
     }
 }
