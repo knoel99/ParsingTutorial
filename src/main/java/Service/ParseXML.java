@@ -1,20 +1,25 @@
 package Service;
 
+import Config.Config;
 import Model.User;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class ParseXML {
-    public ArrayList<User> parseXML(String filePath){
+    public ArrayList<User> parseXML(String filePath) throws IOException {
+        /**
+         * Load configuration
+         */
+        Properties conf = Config.loadProperties("application.properties");
+
         ArrayList<User> userList = new ArrayList<User>();
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -24,11 +29,13 @@ public class ParseXML {
             String xpathExpressionName = "";
             String xpathExpressionAge = "";
 
-            /*******Get attribute values using xpath******/
+            /**
+             * Get attribute values using xpath
+             */
 
             //Get all persons name and age
-            xpathExpressionName = "/root/person/name/text()";
-            xpathExpressionAge = "/root/person/age/text()";
+            xpathExpressionName = conf.getProperty("xpath.Expression.Name");
+            xpathExpressionAge = conf.getProperty("xpath.Expression.Age");
 
             ArrayList<String> nameList = new ArrayList<String>(this.evaluateXPath(doc, xpathExpressionName));
             ArrayList<String> ageList = new ArrayList<String>(this.evaluateXPath(doc, xpathExpressionAge));
