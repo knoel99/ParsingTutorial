@@ -12,7 +12,7 @@ To do this tutorial you should have the basics in programming (basic types, loop
  This tutorial will not show you how to write every single line of the project but rather lead you to write
  your own version of the project throughout a structured list of instructions/questions. The best way to learn is by doing :)
  
- If you find any error, or have any suggestion or piece of advice, don't hesitate to drop me a message or 
+ If you find any error, or have any suggestion, don't hesitate to drop me a message or 
  a pull request :)
 
 ## What you will learn
@@ -31,29 +31,26 @@ To do this tutorial you should have the basics in programming (basic types, loop
 http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
 Some other Java tutorials:  
-https://www.tutorialspoint.com/java/ 
-https://openclassrooms.com/courses/apprenez-a-programmer-en-java 
-http://www.jmdoudoux.fr/java/dej/chap-preambule.htm 
+- https://www.tutorialspoint.com/java/ 
+- https://openclassrooms.com/courses/apprenez-a-programmer-en-java
+- http://www.jmdoudoux.fr/java/dej/chap-preambule.htm 
 
 #### Install Maven
 - What is maven
 - What is it used for?
-
-https://maven.apache.org/download.cgi 
+- https://maven.apache.org/download.cgi 
 
 Some Maven tutorials : 
-
-https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html 
-https://www.jmdoudoux.fr/java/dej/chap-maven.htm  
-http://matthieu-lux.developpez.com/tutoriels/java/maven/0.2/ 
+- https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html 
+- https://www.jmdoudoux.fr/java/dej/chap-maven.htm  
+- http://matthieu-lux.developpez.com/tutoriels/java/maven/0.2/ 
 
 
 #### Install an IDE: IntelliJ
 - What is an IDE?
 - How to configure a proxy on IntelliJ?
 - How to install plugins? Install Scala plugin (for the next tutorial)
-
-https://www.jetbrains.com/idea/ 
+- https://www.jetbrains.com/idea/ 
 
 You can also use Eclipse, but IntelliJ is the most advanced Java IDE in my honest opinion.
 
@@ -62,22 +59,17 @@ You can also use Eclipse, but IntelliJ is the most advanced Java IDE in my hones
 - What is it used for?
 - What is GitHub? What is GitLab?
 - What is a README.md, a CONTRIBUTING.md?
-
-https://git-scm.com/ 
-
-Git workflow: http://nvie.com/posts/a-successful-git-branching-model/ 
-
-Markdown Language : https://guides.github.com/features/mastering-markdown/ 
+- https://git-scm.com/ 
+- Git workflow: http://nvie.com/posts/a-successful-git-branching-model/ 
+- Markdown Language : https://guides.github.com/features/mastering-markdown/ 
 
 
 ## Part 1
-
 - Creating a Java 8/Maven project using IntelliJ 
 - The purpose is to parse a JSON file and an XML file (from 
 https://github.com/knoel99/ParsingTutorial/tree/master/src/main/resources) and do simple calculations on the recovered data.
-Part 1
 
-Take the JSON file: liste_noms_age.json
+Take the JSON file: *liste_noms_age.json*
 
 The purpose of the program will be to read the JSON file and display an answer to the following questions:
 - Who is the youngest? Who is the oldest? 
@@ -95,7 +87,9 @@ parses the JSON to make "readable and exploitable" objects.
 - Learn more about the JsonPath API, Sample doc: https://github.com/json-path/JsonPath
 
 ## Part 2
-Do the same with the XML file: liste_nom_ages.xml
+Do the same with the XML file: *liste_nom_ages.xml* (from 
+https://github.com/knoel99/ParsingTutorial/tree/master/src/main/resources)
+
 Hey hey, the ages have changed or it's not funny :D
 
 Tricks:
