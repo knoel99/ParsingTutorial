@@ -1,7 +1,7 @@
-package Service;
+package service;
 
-import Config.Config;
-import Model.User;
+import config.Config;
+import model.User;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
