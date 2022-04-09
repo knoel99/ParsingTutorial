@@ -1,9 +1,9 @@
-import Config.Config;
-import Model.User;
-import Service.ImportJSON;
-import Service.ParseJSON;
-import Service.ParseXML;
-import Service.Stats;
+import config.Config;
+import model.User;
+import service.ImportJSON;
+import service.ParseJSON;
+import service.ParseXML;
+import service.Stats;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -17,36 +17,26 @@ public class Main {
 
     public static void main(String arg[]) throws IOException {
         logger.setLevel(Level.INFO);
-        /**
-         * Load configuration
-         */
+        // Load configuration
         Properties conf = Config.loadProperties("application.properties");
 
         String path = Paths.get(".", "src", "main", "resources", conf.getProperty("file.json")).toString();
 
-        /**
-         * Read file
-         */
+        // Read file
         ImportJSON importJSON = new ImportJSON();
         String fileContent = importJSON.readFile(path);
 
-        /**
-         * Parse file content into Object
-         */
+        // Parse file content into Object
         ParseJSON parseJSON = new ParseJSON();
         User[] userList = parseJSON.parser(fileContent);
         logger.info(Arrays.toString(userList));
 
-        /**
-         * Do some stats on the data
-         */
+        // Do some stats on the data
         Stats stats = new Stats(userList);
         stats.compute();
         logger.info(stats.toString());
 
-        /**
-         * Import and parse XML
-         */
+        // Import and parse XML
         String pathXML = Paths.get(".", "src", "main", "resources", conf.getProperty("file.xml")).toString();
         ParseXML parseXML = new ParseXML();
         parseXML.parseXML(pathXML);

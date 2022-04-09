@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Model.User;
+import model.User;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.IntStream;

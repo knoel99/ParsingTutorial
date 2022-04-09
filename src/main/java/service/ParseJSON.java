@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Model.User;
+import model.User;
 import com.jayway.jsonpath.JsonPath;
 
 public class ParseJSON {
